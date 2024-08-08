@@ -13,7 +13,7 @@ context('Funcionalidade Login', () => {
     });
 
     afterEach(() => {
-        cy.screenshot()
+        //cy.screenshot()
     });
 
     it('Login com sucesso usando Comando customizado', () => {
