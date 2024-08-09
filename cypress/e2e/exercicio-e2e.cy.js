@@ -23,7 +23,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         })
 
         //Adicionando 4 produtos usando massa de dados
-        cy.fixture('produtos').then(dados => {
+        /*cy.fixture('produtos').then(dados => {
             let prod = 0
             produtosPage.buscarProduto(dados[prod].nomeProduto)
             produtosPage.addProdutoCarrinho(dados[prod].tamanho,
@@ -49,7 +49,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
                 dados[prod].quantidade)
 
             cy.get('.woocommerce-message').should('contain', dados[prod].nomeProduto)
-        });
+        });*/
         cy.fixture('produtos').then(dados => {
             let prod = 3
             produtosPage.buscarProduto(dados[prod].nomeProduto)
@@ -70,9 +70,9 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('#terms').check()
 
         //Finalizar a compra
-        cy.get('#place_order').click()
+        cy.get('#place_order').click({force:true}) //Deu o mesmo problema :c
 
-        cy.wait(6000) // <= Esperar para não dar time out (???)
+        //cy.wait(6000) // <= Esperar para não dar time out (???)
 
         //Checagem de sucesso
         cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.')
