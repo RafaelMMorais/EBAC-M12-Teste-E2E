@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import produtosPage from "../support/page_objects/produtos.page";
+import { faker } from '@faker-js/faker';
 
 context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     /*  Como cliente 
@@ -65,6 +66,14 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
         //Ir para pagamentos
         cy.get('.checkout-button').click()
+
+        //Implementando dados fakes no cadastro
+        cy.get('#billing_address_1').clear().type(faker.location.streetAddress())
+        cy.get('#billing_city').clear().type(faker.location.city())
+        cy.fixture('users').then((dados) => {cy.get('#billing_postcode').clear().type(dados.cep)})
+        cy.fixture('users').then((dados) => {cy.get('#billing_phone').clear().type(dados.telefone)})
+        //cy.get('#billing_postcode').clear().type(faker.location.zipCode())
+        //cy.get('#billing_phone').clear().type(faker.phone.number())
 
         //Checar os termos de uso
         cy.get('#terms').check()
