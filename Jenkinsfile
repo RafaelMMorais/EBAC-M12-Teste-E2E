@@ -14,10 +14,5 @@ pipeline {
                 npm test'''
             }
         }
-        post {
-           always {
-               junit 'results/*.xml'
-           }
-       }
     }
 }
