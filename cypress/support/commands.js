@@ -1,3 +1,5 @@
+require('@reportportal/agent-js-cypress/lib/commands/reportPortalCommands');
+
 Cypress.Commands.add('login', (usuario, senha) => { 
     cy.get('#username').type(usuario) // <= escrevendo o login na textbox username
     cy.get('#password').type(senha) // <= escrevendo a senha na textbox password
